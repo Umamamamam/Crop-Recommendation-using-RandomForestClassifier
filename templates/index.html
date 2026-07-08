@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crop Recommendation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+  <div class="field-lines" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <main class="wrap">
+    <header class="header">
+      <p class="eyebrow">Crop Recommendation</p>
+    </header>
+
+    <section class="panel">
+      <form id="cropForm">
+        <div class="grid">
+
+          <div class="field">
+            <label for="N">Nitrogen (N)</label>
+            <input type="number" step="any" id="N" name="N" placeholder="e.g. 90" required />
+            <span class="hint">kg/ha &middot; 0&ndash;140</span>
+          </div>
+
+          <div class="field">
+            <label for="P">Phosphorus (P)</label>
+            <input type="number" step="any" id="P" name="P" placeholder="e.g. 42" required />
+            <span class="hint">kg/ha &middot; 5&ndash;145</span>
+          </div>
+
+          <div class="field">
+            <label for="K">Potassium (K)</label>
+            <input type="number" step="any" id="K" name="K" placeholder="e.g. 43" required />
+            <span class="hint">kg/ha &middot; 5&ndash;205</span>
+          </div>
+
+          <div class="field">
+            <label for="temperature">Temperature</label>
+            <input type="number" step="any" id="temperature" name="temperature" placeholder="e.g. 21.5" required />
+            <span class="hint">&deg;C</span>
+          </div>
+
+          <div class="field">
+            <label for="humidity">Humidity</label>
+            <input type="number" step="any" id="humidity" name="humidity" placeholder="e.g. 82" required />
+            <span class="hint">% relative humidity</span>
+          </div>
+
+          <div class="field">
+            <label for="ph">Soil pH</label>
+            <input type="number" step="any" id="ph" name="ph" placeholder="e.g. 6.5" required />
+            <span class="hint">3.5&ndash;9.9</span>
+          </div>
+
+          <div class="field span-2">
+            <label for="rainfall">Rainfall</label>
+            <input type="number" step="any" id="rainfall" name="rainfall" placeholder="e.g. 202" required />
+            <span class="hint">mm</span>
+          </div>
+
+        </div>
+
+        <button type="submit" id="submitBtn">Recommend a crop</button>
+      </form>
+    </section>
+
+    <section class="result" id="result" hidden>
+      <p class="result-label">Best match for this plot</p>
+      <h2 id="resultCrop">&mdash;</h2>
+      <div class="top3" id="top3"></div>
+    </section>
+
+    <section class="result error" id="errorBox" hidden>
+      <p id="errorText"></p>
+    </section>
+ 
+  </main>
+     <footer id="footer" class = "footer">
+      <p class="footer-heading">Developed by Sandeep Raj G</p>
+    </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
